@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Enext - Eduardo Mendonça</title>
+	<link href="https://fonts.googleapis.com/css2?family=Epilogue&family=Lato&family=Open+Sans&family=Roboto&family=Sora&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
+	<script src="axios.min.js"></script>
+	<script src="api.js"></script>
+
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-1">
+					<img src="./images/logo.png" alt="" class="img-logo">
+				</div>
+				<div class="col-lg-11">
+					<form id="form" class="componentes">
+						<select name="" id="select_todas_racas" required>		
+						</select>
+						<input type="text" id="input_nome_cachorro" placeholder="Nome do cachorro" required>
+						<select name="" id="select_cor" required>
+							<option value="#F53411" style="color: #F53411;">#F53411</option>
+							<option value="#C97755" style="color: #C97755;">#C97755</option>
+							<option value="#21ACC2" style="color: #21ACC2;">#21ACC2</option>
+							<option value="#34425C" style="color: #34425C;">#34425C</option>
+							<option value="#115FF5" style="color: #115FF5;">#115FF5</option>
+						</select>
+						<select name="" id="select_fontes" required>
+							<option selected value="">Selecione uma cor</option>
+							<option value="roboto" class="roboto">Roboto</option>
+							<option value="open-sans" class="open-sans">Open Sans</option>
+							<option value="lato" class="lato">Lato</option>
+							<option value="sora" class="sora">Sora</option>
+							<option value="epilogue" class="epilogue">Epilogue</option>
+						</select>
+						<button id="btn_salvar">Salvar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</header>
+	<br>
+	<p id="data"></p>
+	<div style="background-image: url('images/default.jpg')" id="imagem" class="box-resultado">
+		<h1 id="resultado_nome_cachorro"></h1>
+	</div>
+	<div id="load">
+		<div class="spinner-border text-dark" role="status">
+			<span class="sr-only">Loading...</span>
+		  </div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+	<script>
+		window.onload = function() {
+
+		document.getElementById('select_todas_racas').addEventListener('change', function() {
+			buscarImagemDog(this.value);
+		});
+		document.getElementById('input_nome_cachorro').addEventListener('keyup', function() {
+			mudarNomedoCachorro(this.value);
+		});
+		document.getElementById('select_cor').addEventListener('change', function() {
+			mudarCor(this.value);
+		});
+		document.getElementById('select_fontes').addEventListener('change', function() {
+			mudarFonte(this.value);
+		});
+		document.getElementById('form').addEventListener('submit', function(e) {
+			e.preventDefault();
+			Swal.fire(
+				'Salvo com sucesso !',
+				'',
+				'success'
+			)
+			let fonte = document.getElementById('select_fontes');
+			mudaAtributo('fonte', fonte.value);
+
+			let cor = document.getElementById('select_cor');
+			mudaAtributo('cor', cor.value);
+
+			let nome = document.getElementById('input_nome_cachorro');
+			mudaAtributo('nome', nome.value);
+
+			let racas = document.getElementById('select_todas_racas');
+			let imagem = document.getElementById('imagem');
+			mudaAtributo('imagem', imagem.style.backgroundImage);
+			mudaAtributo('raca', racas.value);
+			mudaAtributo('data', new Date());
+		})
+		
+		let load = document.getElementById('load');
+			load.style.display = 'none';	
+
+		};			
+	</script>
+</body>
+</html>
+

@@ -1,0 +1,124 @@
+.eplioque {
+  font-family: "Epilogue", sans-serif;
+}
+
+.lato {
+  font-family: "Lato", sans-serif;
+}
+
+.open-sans {
+  font-family: "Open Sans", sans-serif;
+}
+
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.sora {
+  font-family: "Sora", sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+body div#load {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #e6e6e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header {
+  width: 100%;
+  background: #000;
+  padding: 50px 0;
+}
+header .img-logo {
+  max-width: 100%;
+  width: 80px;
+}
+header .componentes {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+header .componentes * {
+  border: 3px solid #000;
+  border-radius: 5px;
+  padding: 5px 20px;
+  background: #fff;
+  font-weight: 500;
+}
+header .componentes *:hover {
+  opacity: 0.9;
+  border-color: #ff7f50;
+}
+header .componentes *:focus {
+  opacity: 0.9;
+  border-color: #ff7f50;
+}
+header .componentes button {
+  background-color: #ff7f50;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.box-resultado {
+  width: 450px;
+  height: 450px;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  margin-top: 25px;
+}
+.box-resultado #resultado_nome_cachorro {
+  text-align: center;
+  text-shadow: 1px 1px 1px #fff;
+  width: 100%;
+  font-size: 15px;
+  background-color: #fff;
+}
+
+@media only screen and (max-width: 1200px) {
+  header .img-logo {
+    display: block;
+    margin: 0 auto 20px;
+  }
+  header .componentes {
+    margin-top: 7px;
+  }
+}
+@media only screen and (max-width: 992px) {
+  body {
+    width: auto;
+    height: auto;
+  }
+
+  header .componentes {
+    flex-direction: column;
+  }
+  header .componentes * {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}
+@media only screen and (max-width: 567px) {
+  .box-resultado {
+    width: 280px;
+    height: 280px;
+    margin-top: 15px;
+  }
+}
